@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { Users, UserCog } from 'lucide-react';
+import {Users, UserCog, Undo2} from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import Logo from '../components/Logo';
 import RoleButton from '../components/RoleButton';
@@ -27,20 +27,27 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex max-h-screen">
       {/* Left Section */}
-      <div className="flex-1 flex flex-col p-8">
+      <div className="flex-1 flex flex-col m-8 max-h-screen">
 
         <Logo />
 
-        <div className="flex-1 flex items-center justify-center">
+        <div className="flex-1 flex justify-center">
           <div className="w-full max-w-md">
-            <h1 className="text-3xl font-bold text-center text-blue-500 mb-12">
-              {selectedRole ? '登录' : '我是'}
+            <h1 className="text-3xl font-bold text-left text-blue-500 mb-12 mt-20">
+              {selectedRole ?
+                  <div className="flex flex-row items-center">
+                    <Undo2
+                      className="text-blue-500 hover:text-blue-600 mr-2"
+                      onClick={() => setSelectedRole(null)}/>
+                    登录
+                  </div>
+                  : '我是...'}
             </h1>
 
             {!selectedRole ? (
-              <div className="space-y-4">
+              <div className="space-y-10">
                 <RoleButton
                   icon={<Users className="w-6 h-6" />}
                   label="教师"
@@ -53,27 +60,28 @@ export default function Login() {
                 />
               </div>
             ) : (
-              <LoginForm onSubmit={handleLogin} />
+              <LoginForm onSubmit={handleLogin} role={selectedRole}/>
             )}
 
-            {selectedRole && (
-              <button
-                onClick={() => setSelectedRole(null)}
-                className="mt-4 text-blue-500 hover:text-blue-600 text-sm"
-              >
-                返回角色选择
-              </button>
-            )}
+            {/*{selectedRole && (*/}
+            {/*  // <button*/}
+            {/*  //   onClick={() => setSelectedRole(null)}*/}
+            {/*  //   className="mt-4 text-blue-500 hover:text-blue-600 text-sm"*/}
+            {/*  // >*/}
+            {/*  //   返回角色选择*/}
+            {/*  // </button>*/}
+
+            {/*)}*/}
           </div>
         </div>
       </div>
 
       {/* Right Section */}
-      <div className="flex-1 bg-gradient-to-br flex items-center justify-center ">
+      <div className="flex-1 bg-gradient-to-br flex ">
         <img
           src={loginRight}
           alt="Education"
-          className="w-full max-w-2xl mt-auto ml-auto"
+          className="w-full max-w-fit max-h-[90vh]  mt-auto ml-auto"
         />
       </div>
     </div>
