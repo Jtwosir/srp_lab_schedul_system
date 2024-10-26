@@ -24,9 +24,9 @@ export async function mockLogin(
   await new Promise(resolve => setTimeout(resolve, 500));
 
   if (role === 'teacher' && username === 'teacher') {
-    return mockUsers.teacher;
+    return mockUsers.teacher as User;
   } else if (role === 'admin' && username === 'admin') {
-    return mockUsers.admin;
+    return mockUsers.admin as User;
   }
 
   throw new Error('Invalid credentials');

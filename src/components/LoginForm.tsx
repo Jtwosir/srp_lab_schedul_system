@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface LoginFormProps {
   onSubmit: (username: string, password: string) => void;
@@ -24,12 +24,12 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500
                      focus:border-blue-500 outline-none transition-all"
           placeholder="请输入教师账号"
         />
       </div>
-      
+
       <div className="space-y-2">
         <label htmlFor="password" className="block text-sm font-medium text-gray-700">
           密码
@@ -39,7 +39,7 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 
+          className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500
                      focus:border-blue-500 outline-none transition-all"
           placeholder="请输入密码"
         />

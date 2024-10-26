@@ -1,7 +1,7 @@
 import { Outlet, Navigate, Link, useLocation } from 'react-router-dom';
 import { Calendar, FileText, ClipboardCheck, User } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
-import Logo from './Logo';
+import actor from '@/assets/images/actor_teacher.png';
 
 export default function Layout() {
   const { user, logout } = useAuth();
@@ -27,10 +27,18 @@ export default function Layout() {
     <div className="min-h-screen flex">
       {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
-        <div className="p-6">
-          <Logo />
-        </div>
-        
+          {/* User Profile Section */}
+          <div className="p-6 flex flex-col items-center border-b border-gray-100">
+              <div className="w-16 h-16 rounded-full overflow-hidden mb-3">
+                  <img
+                      src={actor}
+                      alt={user.name}
+                      className="w-full h-full object-cover"
+                  />
+              </div>
+              <span className="text-gray-700 font-medium">{user.name}</span>
+          </div>
+
         <nav className="flex-1 px-4 space-y-2">
           {navItems.map(({ icon: Icon, label, path }) => (
             <Link
@@ -47,23 +55,6 @@ export default function Layout() {
             </Link>
           ))}
         </nav>
-
-        <div className="p-4 border-t border-gray-200">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="font-medium text-gray-900">{user.name}</p>
-              <p className="text-sm text-gray-500">
-                {user.role === 'teacher' ? '教师' : '管理员'}
-              </p>
-            </div>
-            <button
-              onClick={logout}
-              className="text-sm text-red-500 hover:text-red-600"
-            >
-              退出
-            </button>
-          </div>
-        </div>
       </div>
 
       {/* Main Content */}

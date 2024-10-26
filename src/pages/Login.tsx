@@ -6,6 +6,7 @@ import Logo from '../components/Logo';
 import RoleButton from '../components/RoleButton';
 import LoginForm from '../components/LoginForm';
 import type { UserRole } from '../types/auth';
+import loginRight from "@/assets/images/login_right.png"
 
 export default function Login() {
   const [selectedRole, setSelectedRole] = useState<UserRole>(null);
@@ -20,7 +21,7 @@ export default function Login() {
     try {
       await login(username, password, selectedRole);
       navigate('/schedule');
-    } catch (error) {
+    } catch  {
       alert('登录失败，请检查用户名和密码');
     }
   };
@@ -29,8 +30,9 @@ export default function Login() {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Left Section */}
       <div className="flex-1 flex flex-col p-8">
+
         <Logo />
-        
+
         <div className="flex-1 flex items-center justify-center">
           <div className="w-full max-w-md">
             <h1 className="text-3xl font-bold text-center text-blue-500 mb-12">
@@ -67,11 +69,11 @@ export default function Login() {
       </div>
 
       {/* Right Section */}
-      <div className="flex-1 bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center p-8">
+      <div className="flex-1 bg-gradient-to-br flex items-center justify-center ">
         <img
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80"
+          src={loginRight}
           alt="Education"
-          className="w-full max-w-lg rounded-3xl shadow-2xl"
+          className="w-full max-w-2xl mt-auto ml-auto"
         />
       </div>
     </div>
