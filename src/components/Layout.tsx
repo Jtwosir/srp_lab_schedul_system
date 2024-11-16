@@ -55,6 +55,13 @@ export default function Layout() {
             </Link>
           ))}
         </nav>
+
+          <button
+              onClick={logout}
+              className="w-fit bg-gray-100 text-gray-700 px-3 py-1 ml-auto mr-2 my-2 rounded-lg hover:bg-gray-300 transition-colors"
+          >
+              登出
+          </button>
       </div>
 
       {/* Main Content */}

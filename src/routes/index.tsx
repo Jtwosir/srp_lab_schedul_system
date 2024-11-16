@@ -7,7 +7,7 @@ import Review from '../pages/Review';
 import Profile from '../pages/Profile';
 import { UserRole } from '../types/auth';
 
-const teacherRoutes = [
+const toolRoutes = [
   {
     path: 'schedule',
     element: <Schedule />,
@@ -20,20 +20,9 @@ const teacherRoutes = [
     path: 'profile',
     element: <Profile />,
   },
-];
-
-const adminRoutes = [
-  {
-    path: 'schedule',
-    element: <Schedule />,
-  },
   {
     path: 'review',
     element: <Review />,
-  },
-  {
-    path: 'profile',
-    element: <Profile />,
   },
 ];
 
@@ -42,7 +31,7 @@ export const getRoutes = (role: UserRole) => {
     {
       path: '/',
       element: <Layout />,
-      children: role === 'teacher' ? teacherRoutes : adminRoutes,
+      children: toolRoutes,
     },
     {
       path: '/login',

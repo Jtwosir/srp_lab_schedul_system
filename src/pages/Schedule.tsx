@@ -1,10 +1,27 @@
+import { useState } from 'react';
+import ScheduleHeader from '../components/ScheduleHeader';
+import ScheduleGrid from '../components/ScheduleGrid';
+import { mockWeekSchedule } from '../data/mockScheduleData.ts';
+
 export default function Schedule() {
+  const [weekNumber, setWeekNumber] = useState(7);
+
+  const handlePrevWeek = () => {
+    setWeekNumber(prev => Math.max(1, prev - 1));
+  };
+
+  const handleNextWeek = () => {
+    setWeekNumber(prev => Math.min(20, prev + 1));
+  };
+
   return (
     <div className="p-8">
-      <h1 className="text-2xl font-bold text-gray-900">课表</h1>
-      <div className="mt-6 bg-white rounded-lg shadow p-6">
-        <p className="text-gray-600">课表内容将在这里显示</p>
-      </div>
+      <ScheduleHeader
+        weekNumber={weekNumber}
+        onPrevWeek={handlePrevWeek}
+        onNextWeek={handleNextWeek}
+      />
+      <ScheduleGrid schedule={mockWeekSchedule} />
     </div>
   );
 }
