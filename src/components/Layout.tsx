@@ -24,7 +24,7 @@ export default function Layout() {
       ];
 
   return (
-    <div className="min-h-screen flex">
+    <div className="h-screen flex">
       {/* Sidebar */}
       <div className="w-64 bg-white border-r border-gray-200 flex flex-col">
           {/* User Profile Section */}
@@ -65,7 +65,7 @@ export default function Layout() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 bg-gray-50">
+      <div className="flex-1 bg-gray-50 overflow-y-auto">
         <Outlet />
       </div>
     </div>
