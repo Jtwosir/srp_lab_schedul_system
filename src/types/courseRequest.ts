@@ -1,4 +1,8 @@
 export interface SelectedTime {
+  weekRange: {
+    start: number;
+    end: number;
+  };
   weekday: string;
   startPeriod: number;
   endPeriod: number;
