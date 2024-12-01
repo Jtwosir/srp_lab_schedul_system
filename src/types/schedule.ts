@@ -5,6 +5,8 @@ export interface ScheduleClass {
   time: string;
   weeks: string;
   classes: string[];
+  startPeriod: number;
+  endPeriod: number;
 }
 
 export interface WeekSchedule {
